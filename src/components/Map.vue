@@ -5,6 +5,7 @@
 <script>
 import * as axios from "axios";
 import gmapsInit from "../utils/gmaps";
+import gmapsStyle from "../utils/gmaps.style";
 
 export default {
   name: "Map",
@@ -24,6 +25,12 @@ export default {
         map.setCenter(results[0].geometry.location);
         map.fitBounds(results[0].geometry.viewport);
       });
+      const styledMapType = new google.maps.StyledMapType(gmapsStyle, {
+        name: "Styled Map"
+      });
+
+      map.mapTypes.set("styled_map", styledMapType);
+      map.setMapTypeId("styled_map");
 
       const locations = await this.getDonations();
       locations.map(location => {
@@ -33,7 +40,13 @@ export default {
         };
         const title = location.amount.toString();
 
-        const marker = new google.maps.Marker({ position, map, title });
+        const marker = new google.maps.Marker({
+          position,
+          map,
+          title,
+          styles: gmapsStyle
+        });
+
         const radius = new google.maps.Circle({
           map,
           radius: location.radius * 1000,
@@ -41,6 +54,7 @@ export default {
           fillColor: "#1D737A",
           fillOpacity: 0.35
         });
+
         radius.bindTo("center", marker, "position");
         marker.setVisible(false);
       });
