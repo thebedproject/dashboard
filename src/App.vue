@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Map />
+    <NavBar />
   </div>
 </template>
 
 <script>
-import Map from "./components/Map.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
   name: "app",
   components: {
-    Map
+    NavBar
   }
 };
 </script>
