@@ -37,7 +37,9 @@ export default {
         const radius = new google.maps.Circle({
           map,
           radius: location.radius * 1000,
-          fillColor: "0A3200"
+          strokeWeight: 0,
+          fillColor: "#1D737A",
+          fillOpacity: 0.35
         });
         radius.bindTo("center", marker, "position");
         marker.setVisible(false);
