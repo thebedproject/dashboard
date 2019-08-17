@@ -10,7 +10,7 @@
     </div>
     <div class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-end" @click="showNav = !showNav">
-        <router-link class="navbar-item" to="/dashboard">Dashboard</router-link>
+        <!-- <router-link class="navbar-item" to="/dashboard">Dashboard</router-link> -->
       </div>
     </div>
   </nav>
