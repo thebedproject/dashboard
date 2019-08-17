@@ -32,7 +32,15 @@ export default {
           lng: location.lon
         };
         const title = location.amount.toString();
-        new google.maps.Marker({ position, map, title });
+
+        const marker = new google.maps.Marker({ position, map, title });
+        const radius = new google.maps.Circle({
+          map,
+          radius: location.radius * 1000,
+          fillColor: "0A3200"
+        });
+        radius.bindTo("center", marker, "position");
+        marker.setVisible(false);
       });
     } catch (error) {
       // eslint-disable-next-line no-console
