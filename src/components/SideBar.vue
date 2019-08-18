@@ -4,7 +4,10 @@
       <p class="menu-label">General</p>
       <ul class="menu-list">
         <li @click="itemClicked($event)">
-          <a v-bind:class="[activeItem === 'Dashboard' ? 'is-active' : null]">Dashboard</a>
+          <router-link
+            to="/"
+            v-bind:class="[activeItem === 'Dashboard' ? 'is-active' : null]"
+          >Dashboard</router-link>
         </li>
         <li>
           <a>Maps</a>
@@ -12,13 +15,22 @@
         <li>
           <ul>
             <li @click="itemClicked($event)">
-              <a v-bind:class="[activeItem === 'Beds' ? 'is-active' : null]">Beds</a>
+              <router-link
+                to="/bed-map"
+                v-bind:class="[activeItem === 'Beds' ? 'is-active' : null]"
+              >Beds</router-link>
             </li>
             <li @click="itemClicked($event)">
-              <a v-bind:class="[activeItem === 'Letter boxes' ? 'is-active' : null]">Letter boxes</a>
+              <router-link
+                to="/letter-box-map"
+                v-bind:class="[activeItem === 'Letter boxes' ? 'is-active' : null]"
+              >Letter boxes</router-link>
             </li>
             <li @click="itemClicked($event)">
-              <a v-bind:class="[activeItem === 'Donations' ? 'is-active' : null]">Donations</a>
+              <router-link
+                to="/donation-map"
+                v-bind:class="[activeItem === 'Donations' ? 'is-active' : null]"
+              >Donations</router-link>
             </li>
           </ul>
         </li>
@@ -26,10 +38,16 @@
       <p class="menu-label">Account</p>
       <ul class="menu-list">
         <li @click="itemClicked($event)">
-          <a v-bind:class="[activeItem === 'Your donations' ? 'is-active' : null]">Your donations</a>
+          <router-link
+            to="/your-donations"
+            v-bind:class="[activeItem === 'Your donations' ? 'is-active' : null]"
+          >Your donations</router-link>
         </li>
         <li @click="itemClicked($event)">
-          <a v-bind:class="[activeItem === 'Help history' ? 'is-active' : null]">Help history</a>
+          <router-link
+            to="/history"
+            v-bind:class="[activeItem === 'Help history' ? 'is-active' : null]"
+          >Help history</router-link>
         </li>
       </ul>
     </aside>
@@ -47,7 +65,6 @@ export default {
   methods: {
     itemClicked: function(e) {
       this.activeItem = e.path[1].textContent;
-      console.log(this.activeItem);
     }
   }
 };

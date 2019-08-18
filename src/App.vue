@@ -6,7 +6,7 @@
         <SideBar />
       </div>
       <div class="column">
-        <MapPage />
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -15,14 +15,12 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import SideBar from "./components/SideBar";
-import MapPage from "./pages/Map.page";
 
 export default {
   name: "app",
   components: {
     NavBar,
-    SideBar,
-    MapPage
+    SideBar
   }
 };
 </script>
