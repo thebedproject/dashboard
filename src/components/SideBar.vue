@@ -3,10 +3,10 @@
     <aside class="menu">
       <p class="menu-label">General</p>
       <ul class="menu-list">
-        <li @click="itemClicked($event)">
+        <li>
           <router-link
             to="/"
-            v-bind:class="[activeItem === 'Dashboard' ? 'is-active' : null]"
+            v-bind:class="[this.$route.path === '/' ? 'is-active' : null]"
           >Dashboard</router-link>
         </li>
         <li>
@@ -14,22 +14,22 @@
         </li>
         <li>
           <ul>
-            <li @click="itemClicked($event)">
+            <li>
               <router-link
                 to="/bed-map"
-                v-bind:class="[activeItem === 'Beds' ? 'is-active' : null]"
+                v-bind:class="[this.$route.path === '/bed-map' ? 'is-active' : null]"
               >Beds</router-link>
             </li>
-            <li @click="itemClicked($event)">
+            <li>
               <router-link
                 to="/letter-box-map"
-                v-bind:class="[activeItem === 'Letter boxes' ? 'is-active' : null]"
+                v-bind:class="[this.$route.path === '/letter-box-map' ? 'is-active' : null]"
               >Letter boxes</router-link>
             </li>
-            <li @click="itemClicked($event)">
+            <li>
               <router-link
                 to="/donation-map"
-                v-bind:class="[activeItem === 'Donations' ? 'is-active' : null]"
+                v-bind:class="[this.$route.path === '/donation-map' ? 'is-active' : null]"
               >Donations</router-link>
             </li>
           </ul>
@@ -40,13 +40,13 @@
         <li @click="itemClicked($event)">
           <router-link
             to="/your-donations"
-            v-bind:class="[activeItem === 'Your donations' ? 'is-active' : null]"
+            v-bind:class="[this.$route.path === '/your-donations' ? 'is-active' : null]"
           >Your donations</router-link>
         </li>
         <li @click="itemClicked($event)">
           <router-link
             to="/history"
-            v-bind:class="[activeItem === 'Help history' ? 'is-active' : null]"
+            v-bind:class="[this.$route.path === '/history' ? 'is-active' : null]"
           >Help history</router-link>
         </li>
       </ul>
@@ -56,16 +56,6 @@
 
 <script>
 export default {
-  name: "SideBar",
-  data: function() {
-    return {
-      activeItem: "Dashboard"
-    };
-  },
-  methods: {
-    itemClicked: function(e) {
-      this.activeItem = e.path[1].textContent;
-    }
-  }
+  name: "SideBar"
 };
 </script>

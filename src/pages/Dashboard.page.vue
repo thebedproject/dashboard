@@ -1,16 +1,16 @@
 <template>
   <section>
-    <Map />
+    <Totals />
   </section>
 </template>
 
 <script>
-import Map from "../components/Map";
+import Totals from "../components/Totals";
 
 export default {
-  name: "MapPage",
+  name: "DashboardPage",
   components: {
-    Map
+    Totals
   }
 };
 </script>

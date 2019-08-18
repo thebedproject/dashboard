@@ -76,7 +76,7 @@ export default {
 
 <style>
 .Map {
-  width: 96vw;
+  width: 80vw;
   height: 96vh;
 }
 </style>
