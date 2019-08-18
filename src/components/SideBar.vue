@@ -3,33 +3,33 @@
     <aside class="menu">
       <p class="menu-label">General</p>
       <ul class="menu-list">
-        <li>
-          <a>Dashboard</a>
+        <li @click="itemClicked($event)">
+          <a v-bind:class="[activeItem === 'Dashboard' ? 'is-active' : null]">Dashboard</a>
         </li>
         <li>
           <a>Maps</a>
         </li>
         <li>
           <ul>
-            <li>
-              <a>Beds</a>
+            <li @click="itemClicked($event)">
+              <a v-bind:class="[activeItem === 'Beds' ? 'is-active' : null]">Beds</a>
             </li>
-            <li>
-              <a>Letter Boxes</a>
+            <li @click="itemClicked($event)">
+              <a v-bind:class="[activeItem === 'Letter boxes' ? 'is-active' : null]">Letter boxes</a>
             </li>
-            <li>
-              <a>Donations</a>
+            <li @click="itemClicked($event)">
+              <a v-bind:class="[activeItem === 'Donations' ? 'is-active' : null]">Donations</a>
             </li>
           </ul>
         </li>
       </ul>
       <p class="menu-label">Account</p>
       <ul class="menu-list">
-        <li>
-          <a>Your Donations</a>
+        <li @click="itemClicked($event)">
+          <a v-bind:class="[activeItem === 'Your donations' ? 'is-active' : null]">Your donations</a>
         </li>
-        <li>
-          <a>Help History</a>
+        <li @click="itemClicked($event)">
+          <a v-bind:class="[activeItem === 'Help history' ? 'is-active' : null]">Help history</a>
         </li>
       </ul>
     </aside>
@@ -38,6 +38,17 @@
 
 <script>
 export default {
-  name: "SideBar"
+  name: "SideBar",
+  data: function() {
+    return {
+      activeItem: "Dashboard"
+    };
+  },
+  methods: {
+    itemClicked: function(e) {
+      this.activeItem = e.path[1].textContent;
+      console.log(this.activeItem);
+    }
+  }
 };
 </script>
