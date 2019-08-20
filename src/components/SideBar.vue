@@ -1,12 +1,6 @@
 <template>
   <div>
     <div class="section">
-      <div class="buttons">
-        <div class="button is-fullwidth is-info">Find a bed</div>
-        <div class="button is-fullwidth is-info">Donate</div>
-      </div>
-    </div>
-    <div class="section">
       <aside class="menu">
         <p class="menu-label">General</p>
         <ul class="menu-list">
@@ -44,13 +38,13 @@
         </ul>
         <p class="menu-label">Account</p>
         <ul class="menu-list">
-          <li @click="itemClicked($event)">
+          <li>
             <router-link
               to="/your-donations"
               v-bind:class="[this.$route.path === '/your-donations' ? 'is-active' : null]"
             >Your donations</router-link>
           </li>
-          <li @click="itemClicked($event)">
+          <li>
             <router-link
               to="/history"
               v-bind:class="[this.$route.path === '/history' ? 'is-active' : null]"
@@ -59,11 +53,26 @@
         </ul>
       </aside>
     </div>
+    <div class="section">
+      <div class="buttons">
+        <div class="button is-fullwidth is-link is-outlined">Find a bed</div>
+        <div class="button is-fullwidth is-link is-outlined">Get a postcode</div>
+        <div class="button is-fullwidth is-link is-outlined" @click="openDonateModal()">Donate</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SideBar"
+  name: "SideBar",
+  props: {
+    sideBarVisible: Function
+  },
+  methods: {
+    openDonateModal() {
+      this.$emit("openDonateModal");
+    }
+  }
 };
 </script>

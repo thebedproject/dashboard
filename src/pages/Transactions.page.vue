@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Map from "../components/DonationsMap";
+import Map from "../components/TransactionsMap";
 
 export default {
-  name: "DonationMapPage",
+  name: "TransactionsMapPage",
   components: {
     Map
   }
