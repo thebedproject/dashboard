@@ -1,9 +1,14 @@
 <template>
   <div id="app" class="has-background-primary">
     <DonateModal v-if="donateModal" @donateModalVisible="donateModalVisible" />
+    <FindABedModal v-if="findABedModal" />
     <div class="columns">
       <div v-if="sideBar" class="column is-one-fifth">
-        <SideBar sideBarVisible="sideBarVisible" @donateModalVisible="donateModalVisible" />
+        <SideBar
+          @sideBarVisible="sideBarVisible"
+          @findABedModalVisible="findABedModalVisible"
+          @donateModalVisible="donateModalVisible"
+        />
       </div>
       <div class="column">
         <router-view></router-view>
@@ -14,18 +19,21 @@
 
 <script>
 import SideBar from "./components/SideBar";
-import DonateModal from "./components/DonateModal";
+import DonateModal from "./modals/DonateModal";
+import FindABedModal from "./modals/FindABedModal";
 
 export default {
   name: "app",
   components: {
     SideBar,
-    DonateModal
+    DonateModal,
+    FindABedModal
   },
   data: function() {
     return {
       sideBar: true,
-      donateModal: true
+      donateModal: false,
+      findABedModal: false
     };
   },
   methods: {
@@ -34,6 +42,10 @@ export default {
     },
     donateModalVisible() {
       this.donateModal = !this.donateModal;
+    },
+    findABedModalVisible() {
+      console.log("hit 2");
+      this.findABedModal = !this.findABedModal;
     }
   }
 };

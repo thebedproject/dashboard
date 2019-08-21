@@ -1,6 +1,6 @@
 <template>
   <section class="logo">
-    <div class="title is-3 has-text-white-bis" id="navbar-logo">TheBedProject</div>
+    <div class="title is-3 has-text-white-bis" id="navbar-logo">TheBedProject.</div>
   </section>
 </template>
 

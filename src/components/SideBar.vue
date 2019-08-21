@@ -62,9 +62,15 @@
     </div>
     <div class="section">
       <div class="buttons">
-        <div class="button is-fullwidth is-outlined">Find a bed</div>
-        <div class="button is-fullwidth is-outlined">Get a postcode</div>
-        <div class="button is-fullwidth is-outlined" @click="openDonateModal()">Donate</div>
+        <div
+          class="button is-fullwidth is-inverted is-primary is-outlined"
+          @click="findABedModal()"
+        >Find a bed</div>
+        <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a postcode</div>
+        <div
+          class="button is-fullwidth is-inverted is-primary is-outlined"
+          @click="openDonateModal()"
+        >Donate</div>
       </div>
     </div>
   </div>
@@ -77,12 +83,13 @@ export default {
   components: {
     Logo
   },
-  props: {
-    sideBarVisible: Function
-  },
   methods: {
     openDonateModal() {
       this.$emit("donateModalVisible");
+    },
+    findABedModal() {
+      console.log("hit");
+      this.$emit("findABedModalVisible");
     }
   }
 };

@@ -50,6 +50,9 @@
 </template>
 
 <script>
+const api = require("../utils/plugins/axios");
+const moment = require("moment");
+
 export default {
   name: "DonateModal",
   components: {},
@@ -59,14 +62,26 @@ export default {
   data: function() {
     return {
       postcode: "",
-      amount: 0
+      amount: 0,
+      email: ""
     };
   },
   methods: {
     closeDonateModal() {
       this.$emit("donateModalVisible");
     },
-    donate() {
+    donate: async function() {
+      const requestName =
+        "FindBedExecution" + moment().format("DDMMMMYYYYhmmss") + "-donation";
+      await api.post(
+        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/beds",
+        {
+          input: `{ "data": { "postcode": "${this.postcode}", "amountRequired": ${this.amount} }}`,
+          name: requestName,
+          stateMachineArn:
+            "arn:aws:states:eu-west-2:624659335526:stateMachine:FindABed"
+        }
+      );
       this.$emit("donateModalVisible");
     }
   }
