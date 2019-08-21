@@ -88,7 +88,6 @@ export default {
       this.$emit("donateModalVisible");
     },
     findABedModal() {
-      console.log("hit");
       this.$emit("findABedModalVisible");
     }
   }

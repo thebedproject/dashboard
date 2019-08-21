@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="has-background-primary">
     <DonateModal v-if="donateModal" @donateModalVisible="donateModalVisible" />
-    <FindABedModal v-if="findABedModal" />
+    <FindABedModal v-if="findABedModal" @findABedModalVisible="findABedModalVisible" />
     <div class="columns">
       <div v-if="sideBar" class="column is-one-fifth">
         <SideBar
@@ -44,7 +44,6 @@ export default {
       this.donateModal = !this.donateModal;
     },
     findABedModalVisible() {
-      console.log("hit 2");
       this.findABedModal = !this.findABedModal;
     }
   }

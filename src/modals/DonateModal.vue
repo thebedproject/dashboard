@@ -39,8 +39,20 @@
               </div>
             </div>
           </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Radius</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" v-model="radius" placeholder="2km" />
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="section">
-            <div class="button is-primary is-fullwidth" @click="donate()">Donate</div>
+            <div class="button is-link is-fullwidth" @click="donate()">Donate</div>
           </div>
           <div class="button" @click="closeDonateModal()">close</div>
         </div>
@@ -62,8 +74,9 @@ export default {
   data: function() {
     return {
       postcode: "",
-      amount: 0,
-      email: ""
+      amount: null,
+      email: "",
+      radius: null
     };
   },
   methods: {
@@ -72,16 +85,17 @@ export default {
     },
     donate: async function() {
       const requestName =
-        "FindBedExecution" + moment().format("DDMMMMYYYYhmmss") + "-donation";
-      await api.post(
-        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/beds",
+        "DonateExecution" + moment().format("DDMMMMYYYYhmmss") + "-donate";
+      const response = await api.post(
+        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/donations",
         {
-          input: `{ "data": { "postcode": "${this.postcode}", "amountRequired": ${this.amount} }}`,
+          input: `{ "data": { "postcode": "${this.postcode}", "amount": ${this.amount}, "radius": ${this.radius} }}`,
           name: requestName,
           stateMachineArn:
-            "arn:aws:states:eu-west-2:624659335526:stateMachine:FindABed"
+            "arn:aws:states:eu-west-2:624659335526:stateMachine:Donate"
         }
       );
+      console.log(response);
       this.$emit("donateModalVisible");
     }
   }

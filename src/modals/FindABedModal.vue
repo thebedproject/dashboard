@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="section">
-            <div class="button is-primary is-fullwidth" @click="findABed()">Find a bed</div>
+            <div class="button is-link is-fullwidth" @click="findABed()">Find a bed</div>
           </div>
           <div class="button" @click="closeFindABedModal()">close</div>
         </div>
@@ -58,8 +58,9 @@ export default {
       this.$emit("findABedModalVisible");
     },
     findABed: async function() {
+      this.$emit("findABedModalVisible");
       const requestName =
-        "FindBedExecution" + moment().format("DDMMMMYYYYhmmss") + "-donation";
+        "FindBedExecution" + moment().format("DDMMMMYYYYhmmss") + "-findabed";
       await api.post(
         "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/beds",
         {
@@ -69,7 +70,6 @@ export default {
             "arn:aws:states:eu-west-2:624659335526:stateMachine:FindABed"
         }
       );
-      this.$emit("findABedModalVisible");
     }
   }
 };

@@ -1,13 +1,15 @@
 $green: #0A3200;
 $blue: #1D737A;
 $red: #E93A2F;
-$light-green: #BAB363;
-$pale-green: #CBA762;
+$light-yellow: #BAB363;
+$pale-yellow: #CBA762;
 
 $primary: $green;
 $link: $red;
 $info: $blue;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+
+$menu-item-hover-background-color: $light-yellow;
 
 @import '~bulma/bulma'
