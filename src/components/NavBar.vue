@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <logo></logo>
+      <logo passClass="title is-3 has-text-white-bis"></logo>
       <div class="navbar-burger" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
         <span></span>
         <span></span>
@@ -9,9 +9,7 @@
       </div>
     </div>
     <div class="navbar-menu" :class="{ 'is-active': showNav }">
-      <div class="navbar-end" @click="showNav = !showNav">
-        <router-link class="navbar-item" to="/account">Account</router-link>
-      </div>
+      <div class="navbar-end" @click="showNav = !showNav"></div>
     </div>
   </nav>
 </template>

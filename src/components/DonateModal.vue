@@ -3,18 +3,46 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-header">
-            <slot name="header">default header</slot>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Email</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" type="email" v-model="email" placeholder="me@example.com" />
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            <slot name="body">default body</slot>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Postcode</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" v-model="postcode" placeholder="E14 7DX" />
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="closeDonateModal()">OK</button>
-            </slot>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Amount</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input class="input" v-model="amount" placeholder="£25" />
+                </p>
+              </div>
+            </div>
           </div>
+          <div class="section">
+            <div class="button is-primary is-fullwidth" @click="donate()">Donate</div>
+          </div>
+          <div class="button" @click="closeDonateModal()">close</div>
         </div>
       </div>
     </div>
@@ -23,13 +51,23 @@
 
 <script>
 export default {
-  name: "logo",
+  name: "DonateModal",
+  components: {},
   props: {
     donateModalVisible: Function
   },
+  data: function() {
+    return {
+      postcode: "",
+      amount: 0
+    };
+  },
   methods: {
     closeDonateModal() {
-      this.$emit("openDonateModal");
+      this.$emit("donateModalVisible");
+    },
+    donate() {
+      this.$emit("donateModalVisible");
     }
   }
 };

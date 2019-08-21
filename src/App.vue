@@ -1,10 +1,9 @@
 <template>
-  <div id="app">
-    <NavBar />
-    <DonateModal v-if="donateModal" @openDonateModal="donateModalVisible" />
+  <div id="app" class="has-background-primary">
+    <DonateModal v-if="donateModal" @donateModalVisible="donateModalVisible" />
     <div class="columns">
       <div v-if="sideBar" class="column is-one-fifth">
-        <SideBar sideBarVisible="sideBarVisible" @openDonateModal="donateModalVisible" />
+        <SideBar sideBarVisible="sideBarVisible" @donateModalVisible="donateModalVisible" />
       </div>
       <div class="column">
         <router-view></router-view>
@@ -14,14 +13,12 @@
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue";
 import SideBar from "./components/SideBar";
 import DonateModal from "./components/DonateModal";
 
 export default {
   name: "app",
   components: {
-    NavBar,
     SideBar,
     DonateModal
   },
