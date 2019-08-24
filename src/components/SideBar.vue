@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Logo />
+    <Logo passClass="title is-3 has-text-white-bis" />
     <div class="section">
       <aside class="menu">
         <p class="menu-label has-text-white">General</p>
@@ -58,15 +58,17 @@
     </div>
     <div class="section">
       <div class="buttons">
-        <div
+        <router-link
+          to="/find-a-bed"
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="findABedModal()"
-        >Find a bed</div>
+        >Find a bed</router-link>
         <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a postcode</div>
-        <div
+        <router-link
+          to="donate"
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="openDonateModal()"
-        >Donate</div>
+        >Donate</router-link>
       </div>
     </div>
   </div>

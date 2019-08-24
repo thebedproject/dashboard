@@ -1,6 +1,6 @@
 <template>
   <section class="logo">
-    <div :class="passClass" id="navbar-logo">TheBedProject.</div>
+    <router-link to="/donation-map" :class="passClass" id="navbar-logo">TheBedProject.</router-link>
   </section>
 </template>
 
