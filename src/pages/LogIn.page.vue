@@ -7,7 +7,10 @@
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
             <form>
               <p class="title is-4 is-valigned is-spaced has-text-white">
-                <span>Log in</span>
+                <span class="icon is-medium has-text-white">
+                  <i class="fa fa-user-lock"></i>
+                </span>
+                <span>&nbsp;Log in</span>
               </p>
               <div class="field">
                 <label class="label has-text-white-bis">Email</label>
