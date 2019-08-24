@@ -84,9 +84,10 @@ export default {
       this.$emit("donateModalVisible");
     },
     donate: async function() {
+      this.$emit("donateModalVisible");
       const requestName =
         "DonateExecution" + moment().format("DDMMMMYYYYhmmss") + "-donate";
-      const response = await api.post(
+      await api.post(
         "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/donations",
         {
           input: `{ "data": { "postcode": "${this.postcode}", "amount": ${this.amount}, "radius": ${this.radius} }}`,
@@ -95,8 +96,6 @@ export default {
             "arn:aws:states:eu-west-2:624659335526:stateMachine:Donate"
         }
       );
-      console.log(response);
-      this.$emit("donateModalVisible");
     }
   }
 };

@@ -12,34 +12,30 @@
               class="has-text-white"
             >Dashboard</router-link>
           </li>
-          <li>
-            <a class="has-text-white">Maps</a>
-          </li>
-          <li>
-            <ul>
-              <li>
-                <router-link
-                  to="/bed-map"
-                  v-bind:class="[this.$route.path === '/bed-map' ? 'is-active' : null]"
-                  class="has-text-white"
-                >Beds</router-link>
-              </li>
-              <li>
-                <router-link
-                  to="/letter-box-map"
-                  v-bind:class="[this.$route.path === '/letter-box-map' ? 'is-active' : null]"
-                  class="has-text-white"
-                >Letter boxes</router-link>
-              </li>
-              <li>
-                <router-link
-                  to="/donation-map"
-                  v-bind:class="[this.$route.path === '/donation-map' ? 'is-active' : null]"
-                  class="has-text-white"
-                >Donations</router-link>
-              </li>
-            </ul>
-          </li>
+          <p class="menu-label has-text-white">General</p>
+          <ul>
+            <li>
+              <router-link
+                to="/bed-map"
+                v-bind:class="[this.$route.path === '/bed-map' ? 'is-active' : null]"
+                class="has-text-white"
+              >Beds</router-link>
+            </li>
+            <li>
+              <router-link
+                to="/letter-box-map"
+                v-bind:class="[this.$route.path === '/letter-box-map' ? 'is-active' : null]"
+                class="has-text-white"
+              >Letter boxes</router-link>
+            </li>
+            <li>
+              <router-link
+                to="/donation-map"
+                v-bind:class="[this.$route.path === '/donation-map' ? 'is-active' : null]"
+                class="has-text-white"
+              >Donations</router-link>
+            </li>
+          </ul>
         </ul>
         <p class="menu-label has-text-white">Account</p>
         <ul class="menu-list">

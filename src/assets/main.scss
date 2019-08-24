@@ -10,6 +10,6 @@ $info: $blue;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-$menu-item-hover-background-color: $light-yellow;
+$menu-item-hover-background-color: rgba($link, .5);
 
 @import '~bulma/bulma'
