@@ -67,10 +67,6 @@
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="openDonateModal()"
         >Donate</div>
-        <router-link
-          to="/sign-up"
-          class="button is-fullwidth is-inverted is-primary is-outlined"
-        >Sign up</router-link>
       </div>
     </div>
   </div>

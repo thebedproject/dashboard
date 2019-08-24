@@ -1,63 +1,11 @@
 <template>
-  <section id="app" class="hero is-primary is-fullheight">
-    <Logo passClass />
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form>
-              <p class="title is-4 is-valigned is-spaced has-text-white">
-                <span>Log in</span>
-              </p>
-              <div class="field">
-                <label class="label has-text-white-bis">Email</label>
-                <div class="control has-icons-left">
-                  <input class="input" type="email" placeholder="timhawkins@gmail.com" required />
-                  <span class="icon is-small is-left has-text-gray">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="field">
-                <label class="label has-text-white-bis">Password</label>
-                <div class="control has-icons-left">
-                  <input class="input" type="password" placeholder="********" required />
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-              </div>
-              <div>
-                <p>
-                  <a
-                    class="has-text-weight-semibold has-text-white router-link-active"
-                  >I'd like to create an account</a>
-                </p>
-                <p>
-                  <a
-                    class="has-text-weight-semibold has-text-white router-link-active"
-                  >I've forgotten my password</a>
-                </p>
-              </div>
-              <div class="field">
-                <div class="field is-grouped is-grouped-right">
-                  <button class="button is-link is-medium is-outlined">Log in</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="app" class="has-background-primary">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import Logo from "./components/Logo";
 export default {
-  name: "app",
-  components: {
-    Logo
-  }
+  name: "app"
 };
 </script>
