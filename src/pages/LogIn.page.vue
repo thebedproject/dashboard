@@ -12,7 +12,13 @@
               <div class="field">
                 <label class="label has-text-white-bis">Email</label>
                 <div class="control has-icons-left">
-                  <input class="input" type="email" placeholder="timhawkins@gmail.com" required />
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="timhawkins@gmail.com"
+                    v-model="email"
+                    required
+                  />
                   <span class="icon is-small is-left has-text-gray">
                     <i class="fa fa-envelope"></i>
                   </span>
@@ -21,7 +27,13 @@
               <div class="field">
                 <label class="label has-text-white-bis">Password</label>
                 <div class="control has-icons-left">
-                  <input class="input" type="password" placeholder="********" required />
+                  <input
+                    class="input"
+                    type="password"
+                    placeholder="********"
+                    v-model="password"
+                    required
+                  />
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
@@ -41,7 +53,7 @@
               </div>
               <div class="field">
                 <div class="field is-grouped is-grouped-right">
-                  <button class="button is-link is-medium is-outlined">Log in</button>
+                  <button @click="login" class="button is-link is-medium is-outlined">Log in</button>
                 </div>
               </div>
             </form>
@@ -54,10 +66,33 @@
 
 <script>
 import Logo from "../components/Logo";
+import axios from "axios";
+
 export default {
   name: "app",
   components: {
     Logo
+  },
+  data: function() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login: async function() {
+      const response = await axios.post(
+        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/auth",
+        {
+          data: {
+            route: "logIn",
+            email: this.email,
+            password: this.password
+          }
+        }
+      );
+      console.log(response.data);
+    }
   }
 };
 </script>
