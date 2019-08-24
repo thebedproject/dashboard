@@ -24,15 +24,32 @@ const router = new VueRouter({
       component: SignUpPage
     },
     {
-      path: '/log-in',
+      path: '/login',
       component: LogInPage
     },
     {
       path: "/",
       component: App
+    },
+    {
+      path: '*',
+      redirect: '/login'
     }
+
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
+
+  if (authRequired && !loggedIn) {
+    return next('/login');
+  }
+
+  next();
+})
 
 new Vue({
   render: h => h(App),

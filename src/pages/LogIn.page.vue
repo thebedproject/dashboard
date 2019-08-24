@@ -73,7 +73,7 @@
 
 <script>
 import Logo from "../components/Logo";
-import axios from "axios";
+import { loginRequest } from "../services/user.service";
 
 export default {
   name: "app",
@@ -88,16 +88,7 @@ export default {
   },
   methods: {
     login: async function() {
-      await axios.post(
-        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/auth",
-        {
-          data: {
-            route: "logIn",
-            email: this.email,
-            password: this.password
-          }
-        }
-      );
+      loginRequest(this.email, this.password);
     }
   }
 };
