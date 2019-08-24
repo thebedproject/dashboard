@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import App from './App.vue'
 import LogInPage from './pages/LogIn.page'
 import DonationMapPage from './pages/DonationMap.page'
+import DonatePage from './pages/Donate.page'
 import TransactionsMapPage from './pages/Transactions.page'
 import SignUpPage from './pages/SignUp.page'
 require("./assets/main.scss");
@@ -46,6 +47,10 @@ const router = new VueRouter({
   routes: [{
       path: "/donation-map",
       component: DonationMapPage
+    },
+    {
+      path: "/donate",
+      component: DonatePage
     },
     {
       path: "/bed-map",
