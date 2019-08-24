@@ -88,7 +88,8 @@ export default {
   },
   methods: {
     login: async function() {
-      loginRequest(this.email, this.password);
+      const user = await loginRequest(this.email, this.password);
+      this.$store.dispatch("login", { token: user.token, id: user.id });
     }
   }
 };

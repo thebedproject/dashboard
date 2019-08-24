@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from "vue-router"
+import Vuex from 'vuex'
 import App from './App.vue'
 import LogInPage from './pages/LogIn.page'
 import DonationMapPage from './pages/DonationMap.page'
@@ -8,7 +9,36 @@ import SignUpPage from './pages/SignUp.page'
 require("./assets/main.scss");
 
 Vue.use(VueRouter);
+Vue.use(Vuex)
 Vue.config.productionTip = false
+const store = new Vuex.Store({
+  state: {
+    status: '',
+    token: localStorage.getItem('token') || '',
+    user: {}
+  },
+  mutations: {
+    auth_success(state, token, user) {
+      state.status = 'success'
+      state.token = token
+      state.user = user
+    }
+  },
+  actions: {
+    login({
+      commit
+    }, user) {
+      const token = user.token
+      localStorage.setItem('token', token)
+      commit('auth_success', token, {
+        id: user.id
+      })
+    }
+  },
+  getters: {
+
+  }
+})
 
 const router = new VueRouter({
   routes: [{
@@ -53,5 +83,6 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount("#app");
