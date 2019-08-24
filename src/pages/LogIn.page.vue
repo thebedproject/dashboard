@@ -89,8 +89,8 @@ export default {
   methods: {
     login: async function() {
       const user = await loginRequest(this.email, this.password);
-      await this.$store.dispatch("login", { token: user.token, id: user.id });
-      this.$router.push("/login");
+      this.$store.dispatch("login", { token: user.token, id: user.id });
+      this.$router.push({ path: "/donation-map" });
     }
   }
 };

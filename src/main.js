@@ -56,7 +56,10 @@ const store = new Vuex.Store({
 const router = new VueRouter({
   routes: [{
       path: "/donation-map",
-      component: DonationMapPage
+      component: DonationMapPage,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/donate",
@@ -67,7 +70,10 @@ const router = new VueRouter({
     },
     {
       path: "/bed-map",
-      component: TransactionsMapPage
+      component: TransactionsMapPage,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/sign-up",
