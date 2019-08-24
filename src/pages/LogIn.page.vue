@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     login: async function() {
-      const response = await axios.post(
+      await axios.post(
         "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/auth",
         {
           data: {
@@ -98,7 +98,6 @@ export default {
           }
         }
       );
-      console.log(response.data);
     }
   }
 };
