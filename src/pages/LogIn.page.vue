@@ -53,7 +53,11 @@
               </div>
               <div class="field">
                 <div class="field is-grouped is-grouped-right">
-                  <button @click="login" class="button is-link is-medium is-outlined">Log in</button>
+                  <button @click="login" class="button is-link is-medium is-outlined">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-arrow-right"></i>
+                    </span>
+                  </button>
                 </div>
               </div>
             </form>
