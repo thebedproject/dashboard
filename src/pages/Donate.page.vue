@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-light is-fullheight">
-    <Logo />
+    <Logo passClass="title is-3 has-text-primary" />
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -13,38 +13,35 @@
                 <span>&nbsp;Donate</span>
               </p>
               <div class="field">
-                <label class="label has-text-primary">Email</label>
+                <label class="label has-text-primary">Postcode</label>
                 <div class="control has-icons-left">
-                  <input
-                    class="input"
-                    type="email"
-                    placeholder="timhawkins@gmail.com"
-                    v-model="email"
-                    required
-                  />
+                  <input class="input" placeholder="E14 7DX" v-model="postcode" required />
                   <span class="icon is-small is-left has-text-gray">
-                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-thumbtack"></i>
                   </span>
                 </div>
               </div>
               <div class="field">
-                <label class="label has-text-primary">Password</label>
+                <label class="label has-text-primary">Amount</label>
                 <div class="control has-icons-left">
-                  <input
-                    class="input"
-                    type="password"
-                    placeholder="********"
-                    v-model="password"
-                    required
-                  />
+                  <input class="input" placeholder="100" v-model="amount" required />
                   <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
+                    <i class="fa fa-pound-sign"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-primary">Radius</label>
+                <div class="control has-icons-left">
+                  <input class="input" placeholder="2" v-model="radius" required />
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-ruler-horizontal"></i>
                   </span>
                 </div>
               </div>
               <div class="field">
                 <div class="field is-grouped">
-                  <button @click="login" class="button is-primary is-medium is-fullwidth">Donate</button>
+                  <button @click="donate" class="button is-primary is-medium is-fullwidth">Donate</button>
                 </div>
               </div>
             </form>
