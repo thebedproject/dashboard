@@ -23,6 +23,10 @@ const store = new Vuex.Store({
       state.status = 'success'
       state.token = token
       state.user = user
+    },
+    logout(state) {
+      state.status = ''
+      state.token = ''
     }
   },
   actions: {
@@ -34,6 +38,12 @@ const store = new Vuex.Store({
       commit('auth_success', token, {
         id: user.id
       })
+    },
+    logout({
+      commit
+    }) {
+      commit('logout')
+      localStorage.removeItem('token')
     }
   },
   getters: {
@@ -50,7 +60,10 @@ const router = new VueRouter({
     },
     {
       path: "/donate",
-      component: DonatePage
+      component: DonatePage,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/bed-map",
@@ -77,17 +90,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
-
-  if (authRequired && !loggedIn) {
-    return next('/login');
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login')
+  } else {
+    next()
   }
-
-  next();
 })
-
 new Vue({
   render: h => h(App),
   router,

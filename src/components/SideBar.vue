@@ -63,12 +63,17 @@
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="findABedModal()"
         >Find a bed</router-link>
-        <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a postcode</div>
+        <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a postbox</div>
         <router-link
           to="donate"
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="openDonateModal()"
         >Donate</router-link>
+        <button @click="logout" class="button is-link is-medium is-outlined">
+          <span class="icon is-small is-left">
+            <i class="fa fa-sign-out-alt"></i>
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -76,17 +81,18 @@
 
 <script>
 import Logo from "./Logo";
+import { logout } from "../services/user.service";
+
 export default {
   name: "SideBar",
   components: {
     Logo
   },
   methods: {
-    openDonateModal() {
-      this.$emit("donateModalVisible");
-    },
-    findABedModal() {
-      this.$emit("findABedModalVisible");
+    logout: async function() {
+      logout();
+      await this.$store.dispatch("logout");
+      this.$router.push("/login");
     }
   }
 };

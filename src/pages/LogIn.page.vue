@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-primary is-fullheight">
-    <Logo />
+    <Logo passClass="title is-3 has-text-white-bis" />
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -89,7 +89,8 @@ export default {
   methods: {
     login: async function() {
       const user = await loginRequest(this.email, this.password);
-      this.$store.dispatch("login", { token: user.token, id: user.id });
+      await this.$store.dispatch("login", { token: user.token, id: user.id });
+      this.$router.push("/login");
     }
   }
 };
