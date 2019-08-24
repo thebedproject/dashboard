@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from "vue-router"
 import App from './App.vue'
-import DashboardPage from './pages/Dashboard.page'
+import LogInPage from './pages/LogIn.page'
 import DonationMapPage from './pages/DonationMap.page'
 import TransactionsMapPage from './pages/Transactions.page'
+import SignUpPage from './pages/SignUp.page'
 require("./assets/main.scss");
 
 Vue.use(VueRouter);
@@ -19,8 +20,16 @@ const router = new VueRouter({
       component: TransactionsMapPage
     },
     {
+      path: "/sign-up",
+      component: SignUpPage
+    },
+    {
+      path: '/log-in',
+      component: LogInPage
+    },
+    {
       path: "/",
-      component: DashboardPage
+      component: App
     }
   ]
 });

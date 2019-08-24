@@ -1,14 +1,15 @@
-$green: #0A3200;
-$blue: #1D737A;
-$red: #E93A2F;
-$light-yellow: #BAB363;
-$pale-yellow: #CBA762;
+$blue: #588B8B;
+$orange: #F28F3B;
+$red: #C8553D;
 
-$primary: $green;
-$link: $red;
-$info: $blue;
+$primary: $blue;
+$link: $orange;
+$info: $red;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+
+$control-radius: 0px;
+$control-border-width: 3px;
 
 $menu-item-hover-background-color: rgba($link, .5);
 

@@ -1,6 +1,6 @@
 <template>
-  <section id="app" class="hero is-primary is-fullheight">
-    <Logo passClass />
+  <section class="hero is-primary is-fullheight">
+    <Logo />
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import Logo from "./components/Logo";
+import Logo from "../components/Logo";
 export default {
   name: "app",
   components: {
