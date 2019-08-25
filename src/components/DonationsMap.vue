@@ -51,7 +51,7 @@ export default {
           map,
           radius: location.radius * 1000,
           strokeWeight: 0,
-          fillColor: "#1D737A",
+          fillColor: "#588B8B",
           fillOpacity: 0.35
         });
 

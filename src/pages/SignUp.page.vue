@@ -13,6 +13,15 @@
                 <span>&nbsp;Sign up!</span>
               </p>
               <div class="field">
+                <label class="label has-text-primary">Name</label>
+                <div class="control has-icons-left">
+                  <input class="input" placeholder="Tim Hawkins" v-model="name" required />
+                  <span class="icon is-small is-left has-text-gray">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
                 <label class="label has-text-primary">Email</label>
                 <div class="control has-icons-left">
                   <input
@@ -68,7 +77,7 @@
 
 <script>
 import Logo from "../components/Logo";
-import { loginRequest } from "../services/user.service";
+import { signUpRequest } from "../services/user.service";
 
 export default {
   name: "LogIn",
@@ -78,12 +87,15 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      name: ""
     };
   },
   methods: {
     login: async function() {
-      console.log("hit");
+      const user = await signUpRequest(this.name, this.email, this.password);
+      this.$store.dispatch("login", { token: user.token, id: user.id });
+      this.$router.push({ path: "/donation-map" });
     }
   }
 };
