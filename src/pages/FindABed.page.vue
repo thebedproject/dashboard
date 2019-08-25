@@ -13,7 +13,7 @@
                 <span>&nbsp;Donate</span>
               </p>
               <div class="field">
-                <label class="label has-text-primary">Postcode</label>
+                <label class="label has-text-primary">Location</label>
                 <div class="control has-icons-left">
                   <input class="input" placeholder="E14 7DX" v-model="postcode" required />
                   <span class="icon is-small is-left has-text-gray">
@@ -22,26 +22,20 @@
                 </div>
               </div>
               <div class="field">
-                <label class="label has-text-primary">Amount</label>
+                <label class="label has-text-primary">Code</label>
                 <div class="control has-icons-left">
-                  <input class="input" placeholder="100" v-model="amount" required />
+                  <input class="input" placeholder="your-bed-code" v-model="code" required />
                   <span class="icon is-small is-left">
-                    <i class="fa fa-pound-sign"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="field">
-                <label class="label has-text-primary">Radius</label>
-                <div class="control has-icons-left">
-                  <input class="input" placeholder="2" v-model="radius" required />
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-ruler-horizontal"></i>
+                    <i class="fa fa-bed"></i>
                   </span>
                 </div>
               </div>
               <div class="field">
                 <div class="field is-grouped">
-                  <button @click="donate" class="button is-primary is-medium is-fullwidth">Donate</button>
+                  <button
+                    @click="donate"
+                    class="button is-primary is-medium is-fullwidth"
+                  >Find a bed</button>
                 </div>
               </div>
             </form>
@@ -54,18 +48,14 @@
 
 <script>
 import Logo from "../components/Logo";
-import store from "../store/store";
 const api = require("../utils/plugins/axios");
 const moment = require("moment");
 
 export default {
-  name: "DonatePage",
+  name: "FindABedPage",
   data: function() {
     return {
-      postcode: "",
-      amount: null,
-      email: "",
-      radius: null
+      postcode: ""
     };
   },
   components: {
@@ -73,18 +63,15 @@ export default {
   },
   methods: {
     donate: async function() {
-      const userId = await store.getters.userId;
       const requestName =
-        "DonateExecution" + moment().format("DDMMMMYYYYhmmss") + "-donate";
+        "FindBedExecution" + moment().format("DDMMMMYYYYhmmss") + "-findabed";
       await api.post(
-        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/donations",
+        "https://hdpkjgu3s9.execute-api.eu-west-2.amazonaws.com/test/beds",
         {
-          input: `{ "data": { "postcode": "${this.postcode.toUpperCase()}", "amount": ${
-            this.amount
-          }, "radius": ${this.radius}, "userId": ${userId.__ob__.dep.id} }}`,
+          input: `{ "data": { "postcode": "${this.postcode}", "amountRequired": 8 }}`,
           name: requestName,
           stateMachineArn:
-            "arn:aws:states:eu-west-2:624659335526:stateMachine:Donate"
+            "arn:aws:states:eu-west-2:624659335526:stateMachine:FindABed"
         }
       );
     }
