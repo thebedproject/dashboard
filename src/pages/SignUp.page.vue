@@ -53,9 +53,10 @@
               </div>
               <div>
                 <p>
-                  <a
+                  <router-link
+                    to="/login"
                     class="has-text-weight-semibold has-text-primary router-link-active"
-                  >I already have an account</a>
+                  >I already have an account</router-link>
                 </p>
               </div>
               <div class="field">

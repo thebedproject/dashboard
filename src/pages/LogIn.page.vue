@@ -56,8 +56,15 @@
                 </p>
               </div>
               <div class="field">
-                <div class="field is-grouped is-grouped-right">
+                <div class="field is-grouped is-grouped-right" v-if="!loggingIn">
                   <button @click="login" class="button is-link is-medium is-outlined">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-arrow-right"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="field is-grouped is-grouped-right" v-if="loggingIn">
+                  <button @click="login" class="button is-link is-medium is-outlined is-loading">
                     <span class="icon is-small is-left">
                       <i class="fa fa-arrow-right"></i>
                     </span>
@@ -84,14 +91,19 @@ export default {
   data: function() {
     return {
       email: "",
-      password: ""
+      password: "",
+      loggingIn: false
     };
   },
   methods: {
     login: async function() {
-      const user = await loginRequest(this.email, this.password);
-      this.$store.dispatch("login", { token: user.token, id: user.id });
-      this.$router.push({ path: "/donation-map" });
+      if (this.email && this.password) {
+        this.loggingIn = true;
+        const user = await loginRequest(this.email, this.password);
+        this.$store.dispatch("login", { token: user.token, id: user.id });
+        this.$router.push({ path: "/donation-map" });
+        this.loggingIn = false;
+      }
     }
   }
 };

@@ -12,7 +12,7 @@
               class="has-text-white"
             >Dashboard</router-link>
           </li>
-          <p class="menu-label has-text-white">General</p>
+          <p class="menu-label has-text-white">Maps</p>
           <ul>
             <li>
               <router-link
