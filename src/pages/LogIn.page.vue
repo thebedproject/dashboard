@@ -44,9 +44,10 @@
               </div>
               <div>
                 <p>
-                  <a
+                  <router-link
+                    to="/signup"
                     class="has-text-weight-semibold has-text-white router-link-active"
-                  >I'd like to create an account</a>
+                  >I'd like to create an account</router-link>
                 </p>
                 <p>
                   <a
@@ -76,7 +77,7 @@ import Logo from "../components/Logo";
 import { loginRequest } from "../services/user.service";
 
 export default {
-  name: "app",
+  name: "LogIn",
   components: {
     Logo
   },

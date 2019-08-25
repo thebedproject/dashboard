@@ -76,7 +76,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: "/sign-up",
+      path: "/signup",
       component: SignUpPage
     },
     {

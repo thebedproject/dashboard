@@ -63,7 +63,7 @@
           class="button is-fullwidth is-inverted is-primary is-outlined"
           @click="findABedModal()"
         >Find a bed</router-link>
-        <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a postbox</div>
+        <div class="button is-fullwidth is-inverted is-primary is-outlined">Get a letter box</div>
         <router-link
           to="donate"
           class="button is-fullwidth is-inverted is-primary is-outlined"

@@ -1,6 +1,6 @@
 <template>
-  <section class="logo">
-    <router-link to="/donation-map" :class="passClass" id="navbar-logo">TheBedProject.</router-link>
+  <section class="logo" id="thebedprojectlogo">
+    <router-link to="/donation-map" :class="passClass">TheBedProject.</router-link>
   </section>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   font-weight: 900;
 }
 
-#navbar-logo {
-  padding: 6px 0 0 10px;
+#thebedprojectlogo {
+  padding: 8px 0px 0px 14px;
 }
 </style>
